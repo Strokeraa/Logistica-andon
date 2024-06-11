@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.3" />
+    <title>Atendimento à Janela de Entrega - OEM/AM</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      table {
+        width: 100%;
+        font-size: 13px;
+      }
+
+      th,
+      td {
+        border: 1px solid black;
+        padding: 4px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #f0f0f0;
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .header-info {
+        font-weight: bold;
+        text-align: center;
+        font-size: 12px;
+      }
+
+      .product-info {
+        font-weight: bold;
+        text-align: center;
+        font-size: 20px;
+      }
+
+      .footer {
+        text-align: right;
+        font-size: 10px;
+      }
+
+      .sabo {
+        width: 250px;
+      }
+
+      .pagination {
+        text-align: center;
+        margin-top: 10px;
+        font-weight: bold;
+        font-size: 12px;
+      }
+
+      tr.faturado {
+        background-color:green;
+        font-weight: bold;
+      }
+
+      tr.pendente {
+        background-color:red;
+        font-weight: bold;
+      }
+
+      tr.andamento {
+        background-color:yellow;
+        font-weight: bold;
+      }
+
+      tr.status-amarelo {
+        background-color:yellow;
+        font-weight: bold;
+      }
+
+      tr.recomp-stk {
+        background-color:orange;
+        font-weight: bold;
+      }
+
+      .faturado-percent {
+        color: green;
+      }
+
+      .pendente-percent {
+        color: red;
+      }
+
+      .andamento-percent {
+        color: yellow;
+      }
+
+      .recomp-stk-percent {
+        color: orange;
+      }
+
+      .info-fat {
+        color: green;
+        display: inline;
+        font-size: 25px;
+      }
+
+      .info-pend {
+        color: red;
+        display: inline;
+        font-size: 25px;
+      }
+
+      .info-andam {
+        color: yellow;
+        display: inline;
+        font-size: 25px;
+      }
+
+      .info-recomp-stk {
+        color: orange;
+        display: inline;
+        font-size: 25px;
+      }
+
+      .title-center {
+        text-align: center;
+        margin: 20px 370px 10px 150px;
+      }
+
+      #producao-estoque {
+        font-weight: bold;
+        text-align: center;
+        font-size: 34px; /* Aumenta o tamanho da fonte */
+      }
+
+      #estoque-table {
+        font-weight: bold;
+        background-color: rgb(44, 44, 44);
+        font-size: 20px; /* Aumenta o tamanho da fonte */
+      }
+
+      #estoque-status {
+        color: rgb(255, 255, 255);
+        font-size: 20px; /* Aumenta o tamanho da fonte */
+      }
+
+      .chart-container {
+        text-align: center;
+        margin: 20px;
+        width: 10px; /* Ajuste o tamanho conforme necessário */
+        height: -10px; /* Ajuste o tamanho conforme necessário */
+      }
+
+      #chart-container {
+        position: absolute;
+        top: -50px;
+        right: 10px;
+        width: 300px; /* Ajuste o tamanho conforme necessário */
+        height: 300px; /* Ajuste o tamanho conforme necessário */
+        background: none; /* Remove fundo */
+        border: none; /* Remove borda */
+        padding: 0; /* Remove padding */
+        margin: 0; /* Remove margin */
+      }
+
+      #piechart {
+        width: 100%;
+        height: 100%;
+        background: none; /* Remove fundo */
+        border: none; /* Remove borda */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <img class="sabo" src="assets/Sabó claro recortado.png" alt="Logo" />
+      <h1 class="title-center">Atendimento à Janela de Entrega OEM/AM</h1>
+    </div>
+
+    <div id="chart-container">
+      <div id="piechart"></div>
+    </div>
+
+    <div class="pagination" id="pagination-info"></div>
+
+    <div class="header-info" id="datetime-info"></div>
+
+    <div class="product-info">
+      <p class="info-fat">Fat.:-%</p>
+      <p class="info-pend">Pend.:-%</p>
+      <p class="info-andam">Andam.:-%</p>
+      <p class="info-recomp-stk">RECOMP.STK.:-%</p>
+    </div>
+
+    <div class="chart-container">
+      <div id="piechart"></div>
+    </div>
+
+    <table id="data-table" border="0">
+      <thead>
+        <tr>
+          <th>Prog.Rem.</th>
+          <th>Cliente</th>
+          <th>Cidade</th>
+          <th>Material</th>
+          <th>Qtd.</th>
+          <th>Dia</th>
+          <!-- Movido para depois da coluna "Qtd." -->
+          <th>Hora</th>
+          <th>Status</th>
+          <th style="display: none">Hidden Status</th>
+        </tr>
+      </thead>
+      <tbody id="data-body"></tbody>
+    </table>
+
+    <p id="producao-estoque">ENTRADA DE PRODUÇÃO NO ESTOQUE (MOGI MIRIM)</p>
+
+    <table id="estoque-table" border="0">
+      <thead>
+        <tr id="estoque">
+          <th>Dia</th>
+          <th>1°Turno</th>
+          <th>2°Turno</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody id="estoque-status"></tbody>
+    </table>
+
+    <div class="footer"></div>
+    <script>
+
+      // Função para recarregar a página após 2 minutos
+    function recarregarPagina() {
+      location.reload(); // Recarrega a página
+    }
+
+    // Agendar a recarga da página após 5 minutos (300000 milissegundos)
+    setTimeout(recarregarPagina, 300000);
+
+
+      // Carregar a API de visualização do Google e o pacote de gráficos
+      google.charts.load("current", { packages: ["corechart"] });
+
+      // Variáveis para controle de paginação
+      var currentPage = 1;
+      var itemsPerPage = 10; // Define quantos itens exibir por página
+
+      // Função para atualizar a data e hora em tempo real
+      function updateDateTime() {
+        var datetimeInfo = document.getElementById("datetime-info");
+        var currentDate = new Date();
+        var formattedDate = currentDate.toLocaleDateString();
+        var formattedTime = currentDate.toLocaleTimeString();
+        datetimeInfo.innerHTML = `<p>Data: ${formattedDate} Hora: ${formattedTime}</p>`;
+      }
+
+      // Função para preencher a tabela com os dados da página atual
+      function preencherTabela(data) {
+        var tableBody = document.getElementById("data-body");
+        tableBody.innerHTML = ""; // Limpa o conteúdo da tabela antes de adicionar os novos dados
+
+        // Calcula o índice inicial e final dos itens na página atual
+        var startIndex = (currentPage - 1) * itemsPerPage;
+        var endIndex = startIndex + itemsPerPage;
+
+        // Itera sobre os dados da página atual e adiciona as linhas à tabela
+        for (var i = startIndex; i < Math.min(endIndex, data.length); i++) {
+          var rowData = data[i].split(",");
+          var row = document.createElement("tr");
+          if (
+            rowData[7].trim().toLowerCase() === "fat.autor." ||
+            rowData[7].trim().toLowerCase() === "agua.conf." ||
+            rowData[7].trim().toLowerCase() === "em.separ."
+          ) {
+            row.classList.add("status-amarelo");
+          } else if (rowData[7].trim().toLowerCase() === "andamento") {
+            row.classList.add("andamento");
+          } else if (rowData[7].trim().toLowerCase() === "recomp.stk") {
+            row.classList.add("recomp-stk");
+          } else {
+            row.classList.add(rowData[7].trim().toLowerCase()); // Adiciona a classe ao elemento <tr>
+          }
+
+          // Adiciona a classe de status à célula oculta
+          var hiddenStatusCell = document.createElement("td");
+          hiddenStatusCell.classList.add(rowData[7].trim().toLowerCase());
+          hiddenStatusCell.style.display = "none";
+          row.appendChild(hiddenStatusCell);
+
+          rowData.forEach(function (cellData) {
+            var cell = document.createElement("td");
+            cell.appendChild(document.createTextNode(cellData));
+            row.appendChild(cell);
+          });
+
+          tableBody.appendChild(row);
+        }
+
+        // Calcula as porcentagens com base no conjunto de dados completo
+        var fatCount = 0;
+        var pendCount = 0;
+        var andamCount = 0;
+        var recompStkCount = 0;
+        for (var i = 0; i < data.length; i++) {
+          var rowData = data[i].split(",");
+          switch (rowData[7].trim().toLowerCase()) {
+            case "faturado":
+              fatCount++;
+              break;
+            case "pendente":
+              pendCount++;
+              break;
+            case "andamento":
+            case "fat.autor.":
+            case "agua.conf.":
+            case "em.separ.":
+              andamCount++;
+              break;
+            case "recomp.stk":
+              recompStkCount++;
+              break;
+          }
+        }
+
+        var fatPercent = (fatCount / data.length) * 100;
+        var pendPercent = (pendCount / data.length) * 100;
+        var andamPercent = (andamCount / data.length) * 100;
+        var recompStkPercent = (recompStkCount / data.length) * 100;
+
+        // Atualiza o elemento .info-fat
+        document.querySelector(".info-fat").textContent =
+          "Fat.: " + fatPercent.toFixed(2) + "%";
+
+        // Atualiza o elemento .info-pend
+        document.querySelector(".info-pend").textContent =
+          "Pend.: " + pendPercent.toFixed(2) + "%";
+
+        // Atualiza o elemento .info-andam
+        document.querySelector(".info-andam").textContent =
+          "Andam.: " + andamPercent.toFixed(2) + "%";
+
+        // Atualiza o elemento .info-recomp-stk
+        document.querySelector(".info-recomp-stk").textContent =
+          "RECOMP.STK.: " + recompStkPercent.toFixed(2) + "%";
+
+        // Renderiza o gráfico de pizza com os dados atualizados
+        google.charts.setOnLoadCallback(function () {
+          drawChart(fatPercent, pendPercent, andamPercent, recompStkPercent);
+        });
+
+        updatePaginationInfo(data.length);
+      }
+
+      // Função para desenhar o gráfico de pizza
+      function drawChart(fatPercent, pendPercent, andamPercent, recompStkPercent) {
+        var data = google.visualization.arrayToDataTable([
+          ["Status", "Percentual"],
+          ["Faturado", fatPercent],
+          ["Pendente", pendPercent],
+          ["Andamento", andamPercent],
+          ["RECOMP.STK", recompStkPercent],
+        ]);
+
+        var options = {
+          title: "",
+          pieSliceText: "label",
+          legend: "none",
+          backgroundColor: "transparent", // Define o fundo como transparente
+          colors: ["Green", "Red", "Yellow", "Orange"],
+        };
+
+        var chart = new google.visualization.PieChart(
+          document.getElementById("piechart")
+        );
+        chart.draw(data, options);
+      }
+
+      // Função para preencher a tabela de estoque
+      function preencherTabelaEstoque(data) {
+        var tableBody = document.getElementById("estoque-status");
+        tableBody.innerHTML = ""; // Limpa o conteúdo da tabela antes de adicionar os novos dados
+
+        // Itera sobre os dados de estoque e adiciona as linhas à tabela
+        for (var i = 0; i < data.length; i++) {
+          var rowData = data[i].split("|");
+          var row = document.createElement("tr");
+
+          rowData.forEach(function (cellData) {
+            var cell = document.createElement("td");
+            cell.appendChild(document.createTextNode(cellData));
+            row.appendChild(cell);
+          });
+
+          tableBody.appendChild(row);
+        }
+      }
+
+      // Função para atualizar a informação da paginação
+      function updatePaginationInfo(totalItems) {
+        var totalPages = Math.ceil(totalItems / itemsPerPage);
+        var paginationInfo = document.getElementById("pagination-info");
+        paginationInfo.innerHTML = `Página ${currentPage} de ${totalPages}`;
+      }
+
+      // Função para exibir a próxima página de dados
+      function nextPage(data) {
+        currentPage++;
+        if (currentPage > Math.ceil(data.length / itemsPerPage)) {
+          currentPage = Math.ceil(data.length / itemsPerPage);
+        }
+        preencherTabela(data);
+      }
+
+      // Função para exibir a página anterior de dados
+      function prevPage(data) {
+        currentPage--;
+        if (currentPage < 1) {
+          currentPage = 1;
+        }
+        preencherTabela(data);
+      }
+
+      // Função para ler o arquivo de texto e preencher a tabela
+      function fetchDataAndDisplay() {
+        fetch("dados_formatados.txt")
+          .then((response) => response.text())
+          .then((data) => {
+            var dataArray = data.trim().split("\n");
+            preencherTabela(dataArray);
+            autoAdvance(dataArray);
+          })
+          .catch((error) => console.error("Erro:", error));
+      }
+
+      function fetchEstoqueAndDisplay() {
+        fetch("estoque.txt")
+          .then((response) => response.text())
+          .then((data) => {
+            var estoqueArray = data.trim().split("\n");
+            preencherTabelaEstoque(estoqueArray);
+          })
+          .catch((error) => console.error("Erro:", error));
+      }
+
+      // Função para avançar automaticamente para a próxima página a cada 2 segundos
+      function autoAdvance(data) {
+        setInterval(function () {
+          if (currentPage < Math.ceil(data.length / itemsPerPage)) {
+            nextPage(data);
+          } else {
+            currentPage = 1;
+            preencherTabela(data);
+          }
+        }, 10000);
+      }
+
+      // Chamar a função para preencher a tabela e atualizar a data e hora quando a página é carregada
+      window.onload = function () {
+        fetchDataAndDisplay();
+        fetchEstoqueAndDisplay();
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+      };
+    </script>
+  </body>
+</html>
