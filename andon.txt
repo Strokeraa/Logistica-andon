@@ -106,7 +106,7 @@
 4100381323/000030SABO INDUSTRIA E COMERCIO DE       CAJAMAR             750220      100 PCHOJE      11:38     FATURADO                       X
 4100381323/000030SABO INDUSTRIA E COMERCIO DE       CAJAMAR             750220      100 PCHOJE      11:38     FATURADO                       X
 4100381323/000030SABO INDUSTRIA E COMERCIO DE       CAJAMAR             750220      100 PCHOJE      11:38     FATURADO                       X
-0032880271/000010EATON LTDA                         VALINHOS            12176       800 PCHOJE      11:46     EM SEPAR.                      X
+0032880271/000010EATON LTDA                         VALINHOS            12176       800 PCHOJE      11:46     FATURADO                       X
 0032880435/000010MWM - TUPY DO BRASIL LTDA          SAO PAULO           15838       704 PCHOJE      13:40     PENDENTE
 0032880580/000010WHIRLPOOL S.A.                     RIO CLARO           13362     13680 PCHOJE      15:00     PENDENTE
 0032880578/000010WHIRLPOOL S.A.                     RIO CLARO           12989     17600 PCHOJE      15:00     PENDENTE
