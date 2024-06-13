@@ -75,7 +75,7 @@
 0032880152/000010GM CC&A DAVISON ROAD PC, CIS       BURTON              76206       756 PCHOJE      09:05     FATURADO                       X
 0032880486/000010ZF ARGENTINA S/A                   SAN FRANCI          29950     4.400 PCHOJE      09:08     FATURADO                       X
 0032880398/000010ZF ARGENTINA S/A                   SAN FRANCI          29856       432 PCHOJE      09:08     FATURADO                       X
-0032880632/000010HAWE NORTH AMERICA INC             HUNTERSVIL          23113     2.000 PCHOJE      09:09     EM SEPAR.                      X
+0032880632/000010HAWE NORTH AMERICA INC             HUNTERSVIL          23113     2.000 PCHOJE      09:09     FATURADO                       X
 0032880087/000010CUMMINS ROCKY MOUNT ENGINE P       ENFIELD             75998     2.250 PCHOJE      09:55     FATURADO                       X
 0032880081/000010TENNECO AUTOMOTIVE BRASIL LT       MOGI MIRIM          19871     2.000 PCHOJE      11:07     EM SEPAR.                      X
 0032875864/000010MAQUINAS AGRICOLAS JACTO S/A       POMPEIA             12234       720 PCHOJE      11:08     EM SEPAR.                      X
