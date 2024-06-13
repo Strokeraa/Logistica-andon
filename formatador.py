@@ -13,6 +13,7 @@ def format_line(line):
     line = line.replace("HEFEI, ANH","HEFEI.AHN")
     line = line.replace("AMANHA"," AMANHA")
     line = line.replace("GM CC&A WORLD HEADQUARTERS,","GM CC&A WORLD HEADQUARTERS")
+    line = line.replace("GM CC&A DAVISON ROAD PC,","GM CC&A DAVISON ROAD PC")
     
     # Insere as barras verticais nas posições especificadas
     formatted_line = (
