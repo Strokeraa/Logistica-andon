@@ -2,7 +2,7 @@ import os
 
 def format_line(line):
     # Define as posições das barras verticais
-    bar_positions = [17, 45, 63, 78, 90, 97, 107]
+    bar_positions = [17, 45, 63, 80, 90, 97, 107]
     
     # Remove o 'X' se estiver presente no final da linha
     if line.strip()[-1] == 'X':
