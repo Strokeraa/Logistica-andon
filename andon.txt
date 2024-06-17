@@ -78,7 +78,7 @@
 0032880598/000010MERCEDES-BENZ DO BRASIL LTDA       SAO BERNAR          13760        34 PCHOJE      10:34     FATURADO                       X
 0032880594/000010MERCEDES-BENZ DO BRASIL LTDA       SAO BERNAR          12342       600 PCHOJE      10:36     FATURADO                       X
 0032880738/000010CUMMINS BRASIL LTDA                GUARULHOS           15535       120 PCHOJE      11:00     PENDENTE
-0032880062/000010MWM - TUPY DO BRASIL LTDA          JUNDIAI             15958       648 PCHOJE      11:09     EM SEPAR.                      X
+0032880062/000010MWM - TUPY DO BRASIL LTDA          JUNDIAI             15958       648 PCHOJE      11:09     FATURADO                       X
 0032880832/000010KACO GMBH + CO KG                  KIRCHARDT           626327    4.800 PCHOJE      11:20     FATURADO                       X
 0032880833/000010KACO GMBH + CO KG                  KIRCHARDT           626301    13860 PCHOJE      11:22     FATURADO                       X
 0032880270/000010EATON LTDA                         VALINHOS            17963       156 PCHOJE      14:20     AGUA.CONF.
