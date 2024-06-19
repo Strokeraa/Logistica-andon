@@ -9,8 +9,8 @@
 0032880103/000010THYSSENKRUPP BRASIL LTDA           POCOS DE C          15983     22848 PCHOJE      07:59     FATURADO                       X
 0032879881/000010VOLKSWAGEN DO BRASIL IND V A       SAO CARLOS          15851     2.496 PCHOJE      08:30     PENDENTE
 0032879882/000010VOLKSWAGEN DO BRASIL IND V A       SAO CARLOS          15998       960 PCHOJE      08:30     PENDENTE
-0032881162/000010WHIRLPOOL S.A.                     RIO CLARO           12928     18000 PCHOJE      08:39     EM SEPAR.                      X
-0032881161/000010WHIRLPOOL S.A.                     RIO CLARO           12989     19200 PCHOJE      08:58     EM SEPAR.                      X
+0032881162/000010WHIRLPOOL S.A.                     RIO CLARO           12928     18000 PCHOJE      08:39     FATURADO                       X
+0032881161/000010WHIRLPOOL S.A.                     RIO CLARO           12989     19200 PCHOJE      08:58     FATURADO                       X
 4100381380/001590SABO INDUSTRIA E COMERCIO DE       CAJAMAR             65880       100 PCHOJE      09:30     FATURADO                       X
 4100381380/001590SABO INDUSTRIA E COMERCIO DE       CAJAMAR             65880       100 PCHOJE      09:30     FATURADO                       X
 4100381380/001590SABO INDUSTRIA E COMERCIO DE       CAJAMAR             65880       100 PCHOJE      09:30     FATURADO                       X
