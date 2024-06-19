@@ -122,12 +122,12 @@
 0032881037/000010MWM - TUPY DO BRASIL LTDA          SAO PAULO           75025       520 PCHOJE      20:55     FATURADO                       X
 0032880061/000010MWM - TUPY DO BRASIL LTDA          JUNDIAI             75081     5.760 PCHOJE      20:56     EM SEPAR.                      X
 0032880816/000010GENERAL MOTORS DO BRASIL LTD       JOINVILLE           15910       675 PCHOJE      20:57     EM SEPAR.                      X
-0032880633/000001AAM DO BRASIL LTDA                 ARAUCARIA           17764     2.100 PCHOJE      21:00     EM SEPAR.                      X
+0032880633/000001AAM DO BRASIL LTDA                 ARAUCARIA           17764     2.100 PCHOJE      21:00     FATURADO                       X
 0032880394/000010MASTER SISTEMAS AUTOMOTIVOS        CAXIAS DO           13661       504 PCHOJE      21:01     FATURADO                       X
 0032880053/000010MWM - TUPY DO BRASIL LTDA          JUNDIAI             15239       644 PCHOJE      21:02     FATURADO                       X
 0032880062/000010MWM - TUPY DO BRASIL LTDA          JUNDIAI             15958       216 PCHOJE      21:02     FATURADO                       X
 0032881020/000010WHIRLPOOL S.A.                     RIO CLARO           13362     13680 PCHOJE      21:04     EM SEPAR.                      X
-0032880583/000010NAKATA AUTOMOTIVA LTDA             EXTREMA             19820     6.400 PCHOJE      21:10     EM SEPAR.                      X
+0032880583/000010NAKATA AUTOMOTIVA LTDA             EXTREMA             19820     6.400 PCHOJE      21:10     FATURADO                       X
 4100381323/000160SABO INDUSTRIA E COMERCIO DE       CAJAMAR             759920      768 PCHOJE      21:24     FATURADO                       X
 4100381323/000210SABO INDUSTRIA E COMERCIO DE       CAJAMAR             759220      550 PCHOJE      21:24     FATURADO                       X
 4100381323/000060SABO INDUSTRIA E COMERCIO DE       CAJAMAR             756290      460 PCHOJE      21:24     FATURADO                       X
